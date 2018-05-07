@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "783313982016",
+    "firebase_url": "https://foodseeker-1.firebaseio.com",
+    "project_id": "foodseeker-1",
+    "storage_bucket": "foodseeker-1.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:783313982016:android:ca6cfd1819cf1b77",
+        "android_client_info": {
+          "package_name": "com.example.supdude.appcomidita"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "783313982016-mfjfvaasso2pbu889f3lrrd0ip9melk3.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.supdude.appcomidita",
+            "certificate_hash": "cd09e7e2306813fe8a955edc244aa5b1adda5383"
+          }
+        },
+        {
+          "client_id": "783313982016-b1ag0tr4a1f81u6hl6hv2ia4mum4ifc8.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBnzisdF-UeKRAw7Ef3hHi7Y8gc4N1ZP1o"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "783313982016-b1ag0tr4a1f81u6hl6hv2ia4mum4ifc8.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

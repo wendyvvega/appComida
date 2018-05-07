@@ -7,32 +7,168 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
-    <ImageView
-        android:id="@+id/imageView"
-        android:layout_width="150dp"
-        android:layout_height="150dp"
+    <LinearLayout
+        android:id="@+id/opcRegistro"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="63dp"
-        app:srcCompat="@drawable/logo"
-        tools:layout_editor_absoluteX="32dp"
-        tools:layout_editor_absoluteY="0dp" />
+        android:background="?android:attr/tooltipBackgroundColor"
+        android:orientation="horizontal"
+        android:visibility="invisible"
+        tools:layout_editor_absoluteX="74dp"
+        tools:layout_editor_absoluteY="174dp">
 
-    <Button
-        android:id="@+id/btnSesion"
-        android:layout_width="217dp"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginBottom="202dp"
-        android:text="Iniciar Sesión" />
+        <android.support.constraint.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
 
-    <Button
-        android:id="@+id/btnRegistrarse"
-        android:layout_width="216dp"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginBottom="132dp"
-        android:text="Registrarse" />
+            <LinearLayout
+                android:layout_width="217dp"
+                android:layout_height="138dp"
+                android:layout_marginLeft="96dp"
+                android:layout_marginStart="96dp"
+                android:layout_marginTop="200dp"
+                android:background="#ffffff"
+                android:gravity="center"
+                android:orientation="horizontal"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
+
+                <android.support.constraint.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1">
+
+                    <TextView
+                        android:id="@+id/textView5"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="20dp"
+                        android:layout_marginLeft="20dp"
+                        android:layout_marginRight="20dp"
+                        android:layout_marginStart="20dp"
+                        android:layout_marginTop="16dp"
+                        android:layout_weight="1"
+                        android:text="Registrarte como:"
+                        android:textAppearance="@style/TextAppearance.AppCompat.Large"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <ImageView
+                        android:id="@+id/regUsuario"
+                        android:layout_width="53dp"
+                        android:layout_height="54dp"
+                        android:layout_marginEnd="33dp"
+                        android:layout_marginLeft="42dp"
+                        android:layout_marginRight="33dp"
+                        android:layout_marginStart="42dp"
+                        android:layout_marginTop="15dp"
+                        android:layout_weight="1"
+                        app:layout_constraintEnd_toStartOf="@+id/regLocal"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/textView5"
+                        app:srcCompat="@drawable/ic_account_box_black_24dp" />
+
+                    <ImageView
+                        android:id="@+id/regLocal"
+                        android:layout_width="53dp"
+                        android:layout_height="54dp"
+                        android:layout_marginEnd="36dp"
+                        android:layout_marginRight="36dp"
+                        android:layout_marginTop="15dp"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toEndOf="@+id/regUsuario"
+                        app:layout_constraintTop_toBottomOf="@+id/textView5"
+                        app:srcCompat="@drawable/ic_restaurant_black_24dp" />
+
+                    <TextView
+                        android:id="@+id/textView8"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="45dp"
+                        android:layout_marginStart="45dp"
+                        android:layout_marginTop="3dp"
+                        android:text="Usuario"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/regUsuario" />
+
+                    <TextView
+                        android:id="@+id/textView9"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="44dp"
+                        android:layout_marginLeft="45dp"
+                        android:layout_marginRight="44dp"
+                        android:layout_marginStart="45dp"
+                        android:layout_marginTop="3dp"
+                        android:text="Local"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toEndOf="@+id/textView8"
+                        app:layout_constraintTop_toBottomOf="@+id/regLocal" />
+                </android.support.constraint.ConstraintLayout>
+
+            </LinearLayout>
+        </android.support.constraint.ConstraintLayout>
+
+    </LinearLayout>
+
+    <android.support.constraint.ConstraintLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+
+        <ImageView
+            android:id="@+id/imageView"
+            android:layout_width="150dp"
+            android:layout_height="150dp"
+            android:layout_alignParentTop="true"
+            android:layout_centerHorizontal="true"
+            android:layout_marginEnd="131dp"
+            android:layout_marginLeft="130dp"
+            android:layout_marginRight="131dp"
+            android:layout_marginStart="130dp"
+            android:layout_marginTop="55dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/logo" />
+
+        <Button
+            android:id="@+id/btnSesion"
+            android:layout_width="217dp"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true"
+            android:layout_marginBottom="22dp"
+            android:layout_marginEnd="97dp"
+            android:layout_marginLeft="97dp"
+            android:layout_marginRight="97dp"
+            android:layout_marginStart="97dp"
+            android:layout_marginTop="146dp"
+            android:gravity="center"
+            android:text="Iniciar Sesión"
+            app:layout_constraintBottom_toTopOf="@+id/btnRegistrarse"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/imageView" />
+
+        <Button
+            android:id="@+id/btnRegistrarse"
+            android:layout_width="216dp"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true"
+            android:layout_marginEnd="97dp"
+            android:layout_marginLeft="98dp"
+            android:layout_marginRight="97dp"
+            android:layout_marginStart="98dp"
+            android:layout_marginTop="8dp"
+            android:text="Registrarse con Email"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/btnSesion" />
+
+    </android.support.constraint.ConstraintLayout>
+
 </RelativeLayout>

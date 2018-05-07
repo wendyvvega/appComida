@@ -10,6 +10,7 @@ public class login extends AppCompatActivity implements View.OnClickListener{
 
     EditText usuario, contraseña;
     Button inicio;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
