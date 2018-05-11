@@ -6,6 +6,7 @@
     <uses-permission android:name="android.permission.GET_ACCOUNTS" />
     <uses-permission android:name="android.permission.READ_PROFILE" />
     <uses-permission android:name="android.permission.READ_CONTACTS" />
+    <uses-permission android:name="android.permission.INTERNET" />
 
     <application
         android:allowBackup="true"
@@ -25,7 +26,8 @@
         <activity android:name=".tiposComida" />
         <activity android:name=".listaLocales" />
         <activity android:name=".registroUsuarios" />
-        <activity android:name=".registroLocales"></activity>
+        <activity android:name=".registroLocales" />
+        <activity android:name=".resetPass"></activity>
     </application>
 
 </manifest>

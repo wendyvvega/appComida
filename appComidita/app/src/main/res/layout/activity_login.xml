@@ -23,24 +23,50 @@
         app:srcCompat="@drawable/logo" />
 
     <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical">
+        android:id="@+id/linearLayout"
+        android:layout_width="388dp"
+        android:layout_height="222dp"
+        android:layout_marginEnd="12dp"
+        android:layout_marginLeft="11dp"
+        android:layout_marginRight="12dp"
+        android:layout_marginStart="11dp"
+        android:layout_marginTop="11dp"
+        android:gravity="center"
+        android:orientation="vertical"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageView2">
 
         <android.support.constraint.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
+            <Button
+                android:id="@+id/btnIniciarSesion"
+                android:layout_width="wrap_content"
+                android:layout_height="48dp"
+                android:layout_marginEnd="132dp"
+                android:layout_marginLeft="131dp"
+                android:layout_marginRight="132dp"
+                android:layout_marginStart="131dp"
+                android:layout_marginTop="27dp"
+                android:gravity="center"
+                android:text="Iniciar sesión"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/txtContra" />
+
             <EditText
                 android:id="@+id/txtContra"
-                android:layout_width="wrap_content"
+                android:layout_width="219dp"
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="83dp"
-                android:layout_marginLeft="83dp"
+                android:layout_marginLeft="86dp"
                 android:layout_marginRight="83dp"
-                android:layout_marginStart="83dp"
+                android:layout_marginStart="86dp"
                 android:layout_marginTop="12dp"
                 android:ems="10"
+                android:gravity="center"
                 android:hint="Contraseña"
                 android:inputType="textPassword"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -49,30 +75,56 @@
 
             <EditText
                 android:id="@+id/txtUsuario"
-                android:layout_width="210dp"
+                android:layout_width="219dp"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="12dp"
                 android:layout_marginEnd="83dp"
                 android:layout_marginLeft="86dp"
                 android:layout_marginRight="83dp"
                 android:layout_marginStart="86dp"
-                android:layout_marginTop="222dp"
                 android:ems="10"
-                android:hint="Nombre de usuario"
-                android:inputType="textPersonName"
+                android:gravity="center"
+                android:hint="Correo electrónico"
+                android:inputType="textEmailAddress"
                 app:layout_constraintBottom_toTopOf="@+id/txtContra"
                 app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.44"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/forgPass"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="232dp"
+                android:layout_marginStart="232dp"
+                android:layout_marginTop="8dp"
+                android:text="Olvidaste tu contraseña?"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/btnIniciarSesion" />
+
+            <ImageView
+                android:id="@+id/muestraContraLI"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="18dp"
+                android:layout_marginStart="18dp"
+                android:layout_marginTop="67dp"
+                app:layout_constraintStart_toEndOf="@+id/txtContra"
+                app:layout_constraintTop_toTopOf="parent"
+                app:srcCompat="@drawable/ic_remove_red_eye_black_24dp" />
         </android.support.constraint.ConstraintLayout>
 
     </LinearLayout>
 
-    <Button
-        android:id="@+id/btnIniciarSesion"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Iniciar sesión"
-        tools:layout_editor_absoluteX="130dp"
-        tools:layout_editor_absoluteY="395dp" />
+    <ImageView
+        android:id="@+id/imageView3"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_marginLeft="4dp"
+        android:layout_marginStart="4dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/ic_keyboard_arrow_left_black_48dp" />
+
 </android.support.constraint.ConstraintLayout>

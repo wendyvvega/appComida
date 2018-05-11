@@ -51,8 +51,8 @@ public class AdaptadorLocal extends BaseAdapter {
         imagenLocal = vista.findViewById(R.id.imgLocal);
 
         tvNombre.setText(listaLocales.get(position).getNombre());
-        tvTelefono.setText(listaLocales.get(position).getTelefono());
-        tvEmail.setText(listaLocales.get(position).getI());
+       /* tvTelefono.setText(listaLocales.get(position).getTelefono());
+        tvEmail.setText(listaLocales.get(position).get());*/
         return vista;
     }
 }
