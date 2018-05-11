@@ -6,37 +6,18 @@
     android:layout_height="match_parent"
     tools:context=".registroUsuarios">
 
-    <ImageView
-        android:id="@+id/add_prof_pic"
-        android:layout_width="79dp"
-        android:layout_height="67dp"
-        android:layout_marginLeft="176dp"
-        android:layout_marginStart="176dp"
-        android:layout_marginTop="8dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/descRU"
-        app:srcCompat="@drawable/ic_add_box_black_48dp" />
-
-    <TextView
-        android:id="@+id/descRU"
-        android:layout_width="251dp"
-        android:layout_height="42dp"
-        android:layout_marginEnd="68dp"
-        android:layout_marginRight="68dp"
-        android:layout_marginTop="16dp"
-        android:gravity="center"
-        android:text="¿Buscas un lugar para comer? Regístrate y encuentra uno al alcance"
-        android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/linearLayout6" />
-
     <LinearLayout
         android:id="@+id/linearLayout6"
         android:layout_width="409dp"
         android:layout_height="34dp"
+        android:layout_marginEnd="1dp"
+        android:layout_marginLeft="1dp"
+        android:layout_marginRight="1dp"
+        android:layout_marginStart="1dp"
         android:orientation="vertical"
-        tools:layout_editor_absoluteX="1dp"
-        tools:layout_editor_absoluteY="0dp">
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
 
         <android.support.constraint.ConstraintLayout
             android:layout_width="match_parent"
@@ -46,10 +27,15 @@
                 android:id="@+id/hecho_RU"
                 android:layout_width="50dp"
                 android:layout_height="19dp"
+                android:layout_marginEnd="32dp"
                 android:layout_marginLeft="305dp"
+                android:layout_marginRight="32dp"
                 android:layout_marginStart="305dp"
                 android:layout_marginTop="8dp"
+                android:clickable="true"
+                android:onClick="onClick"
                 android:text="Hecho"
+                app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toEndOf="@+id/atrasRU"
                 app:layout_constraintTop_toTopOf="parent" />
 
@@ -57,8 +43,10 @@
                 android:id="@+id/atrasRU"
                 android:layout_width="40dp"
                 android:layout_height="40dp"
-                android:layout_marginLeft="4dp"
-                android:layout_marginStart="4dp"
+                android:layout_marginLeft="16dp"
+                android:layout_marginStart="16dp"
+                android:clickable="true"
+                android:onClick="onClick"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
                 app:srcCompat="@drawable/ic_keyboard_arrow_left_black_48dp" />
@@ -70,20 +58,52 @@
         android:id="@+id/linearLayout5"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginEnd="13dp"
+        android:layout_marginLeft="50dp"
+        android:layout_marginRight="13dp"
+        android:layout_marginStart="50dp"
+        android:layout_marginTop="16dp"
         android:gravity="center"
         android:orientation="vertical"
-        tools:layout_editor_absoluteX="52dp"
-        tools:layout_editor_absoluteY="16dp">
+        app:layout_constraintEnd_toStartOf="@+id/muestraPassRU"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout6">
 
         <android.support.constraint.ConstraintLayout
             android:layout_width="307dp"
             android:layout_height="wrap_content"
             android:baselineAligned="false">
 
+            <ImageView
+                android:id="@+id/add_prof_pic"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="120dp"
+                android:layout_marginLeft="139dp"
+                android:layout_marginRight="120dp"
+                android:layout_marginStart="139dp"
+                android:layout_marginTop="40dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/descRU"
+                app:srcCompat="@drawable/ic_add_box_black_48dp" />
+
+            <TextView
+                android:id="@+id/descRU"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="40dp"
+                android:gravity="center"
+                android:text="¿Buscas un lugar para comer? Regístrate y encuentra uno al alcance"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
             <EditText
                 android:id="@+id/apRU"
                 android:layout_width="148dp"
-                android:layout_height="36dp"
+                android:layout_height="wrap_content"
                 android:layout_marginEnd="44dp"
                 android:layout_marginLeft="5dp"
                 android:layout_marginRight="44dp"
@@ -99,7 +119,7 @@
             <EditText
                 android:id="@+id/passRU"
                 android:layout_width="298dp"
-                android:layout_height="36dp"
+                android:layout_height="wrap_content"
                 android:layout_marginBottom="18dp"
                 android:layout_marginEnd="44dp"
                 android:layout_marginLeft="69dp"
@@ -108,7 +128,7 @@
                 android:layout_marginTop="11dp"
                 android:ems="10"
                 android:hint="Contraseña"
-                android:inputType="textEmailAddress|textPassword"
+                android:inputType="textPassword"
                 app:layout_constraintBottom_toTopOf="@+id/rePassRu"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -117,7 +137,7 @@
             <EditText
                 android:id="@+id/emailRU"
                 android:layout_width="298dp"
-                android:layout_height="36dp"
+                android:layout_height="wrap_content"
                 android:layout_marginBottom="11dp"
                 android:layout_marginEnd="44dp"
                 android:layout_marginLeft="69dp"
@@ -135,7 +155,7 @@
             <EditText
                 android:id="@+id/nomRU"
                 android:layout_width="145dp"
-                android:layout_height="36dp"
+                android:layout_height="wrap_content"
                 android:layout_marginLeft="69dp"
                 android:layout_marginStart="69dp"
                 android:ems="10"
@@ -148,7 +168,7 @@
             <EditText
                 android:id="@+id/rePassRu"
                 android:layout_width="298dp"
-                android:layout_height="36dp"
+                android:layout_height="wrap_content"
                 android:layout_marginBottom="17dp"
                 android:layout_marginEnd="44dp"
                 android:layout_marginLeft="69dp"
@@ -156,7 +176,7 @@
                 android:layout_marginStart="69dp"
                 android:ems="10"
                 android:hint="Repetir Contraseña"
-                android:inputType="date"
+                android:inputType="textPassword"
                 app:layout_constraintBottom_toTopOf="@+id/telRU"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -165,7 +185,7 @@
             <EditText
                 android:id="@+id/telRU"
                 android:layout_width="297dp"
-                android:layout_height="40dp"
+                android:layout_height="wrap_content"
                 android:layout_marginEnd="45dp"
                 android:layout_marginLeft="69dp"
                 android:layout_marginRight="45dp"
@@ -182,56 +202,80 @@
     </LinearLayout>
 
     <LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_height="64dp"
+        android:layout_width="251dp"
+        android:layout_height="79dp"
+        android:layout_marginEnd="86dp"
+        android:layout_marginLeft="74dp"
+        android:layout_marginRight="86dp"
+        android:layout_marginStart="74dp"
+        android:layout_marginTop="19dp"
         android:orientation="vertical"
-        tools:layout_editor_absoluteX="74dp"
-        tools:layout_editor_absoluteY="468dp">
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout5">
 
         <android.support.constraint.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
             <TextView
-                android:id="@+id/sx"
+                android:id="@+id/textView"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Sexo"
-                app:layout_constraintTop_toTopOf="parent"
-                tools:layout_editor_absoluteX="7dp" />
-
-            <RadioButton
-                android:id="@+id/sxO"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="17dp"
-                android:layout_marginStart="17dp"
-                android:layout_marginTop="32dp"
-                android:text="Otro"
-                app:layout_constraintStart_toEndOf="@+id/sxM"
-                app:layout_constraintTop_toTopOf="parent" />
-
-            <RadioButton
-                android:id="@+id/sxH"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="7dp"
-                android:layout_marginStart="7dp"
-                android:layout_marginTop="32dp"
-                android:text="Hombre"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
-            <RadioButton
-                android:id="@+id/sxM"
-                android:layout_width="wrap_content"
+            <RadioGroup
+                android:id="@+id/grupo"
+                android:layout_width="264dp"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="14dp"
-                android:layout_marginStart="14dp"
-                android:layout_marginTop="32dp"
-                android:text="Mujer"
-                app:layout_constraintStart_toEndOf="@+id/sxH"
-                app:layout_constraintTop_toTopOf="parent" />
+                android:orientation="vertical"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
+
+                <android.support.constraint.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1">
+
+                    <RadioButton
+                        android:id="@+id/sxO"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="15dp"
+                        android:layout_marginStart="15dp"
+                        android:layout_marginTop="31dp"
+                        android:layout_weight="1"
+                        android:text="Otro"
+                        app:layout_constraintStart_toEndOf="@+id/sxM"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <RadioButton
+                        android:id="@+id/sxH"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="31dp"
+                        android:layout_weight="1"
+                        android:text="Hombre"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <RadioButton
+                        android:id="@+id/sxM"
+                        android:layout_width="wrap_content"
+                        android:layout_height="32dp"
+                        android:layout_marginLeft="7dp"
+                        android:layout_marginStart="7dp"
+                        android:layout_marginTop="31dp"
+                        android:layout_weight="1"
+                        android:text="Mujer"
+                        app:layout_constraintStart_toEndOf="@+id/sxH"
+                        app:layout_constraintTop_toTopOf="parent" />
+                </android.support.constraint.ConstraintLayout>
+
+            </RadioGroup>
+
         </android.support.constraint.ConstraintLayout>
 
     </LinearLayout>
@@ -241,10 +285,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginEnd="16dp"
-        android:layout_marginLeft="12dp"
         android:layout_marginRight="16dp"
-        android:layout_marginStart="12dp"
-        android:layout_marginTop="304dp"
+        android:layout_marginTop="360dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/linearLayout5"
         app:layout_constraintTop_toBottomOf="@+id/linearLayout6"

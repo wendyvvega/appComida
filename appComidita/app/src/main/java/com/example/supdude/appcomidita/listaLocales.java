@@ -23,7 +23,7 @@ public class listaLocales extends AppCompatActivity {
         /*ArrayAdapter<contacto> adaptador = new ArrayAdapter<contacto>(this, R.layout.distribuyevistas,listaDeContactos);
         listView.setAdapter(adaptador);*/
 
-        adaptador = new AdaptadorLocal(this, listaDeLocales);
-        lista.setAdapter(adaptador);
+        /*adaptador = new AdaptadorLocal(this, listaDeLocales);
+        lista.setAdapter(adaptador);*/
     }
 }

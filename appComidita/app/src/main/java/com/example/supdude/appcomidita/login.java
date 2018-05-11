@@ -15,6 +15,7 @@ import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
+import com.google.firebase.FirebaseApp;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 
@@ -25,12 +26,13 @@ public class login extends AppCompatActivity implements View.OnClickListener{
     private EditText correo, contraseña;
     private TextView forgPass;
     private Button iniciar;
-    private FirebaseAuth autentica;
+    private FirebaseAuth mAuth;
     private ImageView showPass;
      String email,pass;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        mAuth=FirebaseAuth.getInstance();
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
@@ -39,7 +41,7 @@ public class login extends AppCompatActivity implements View.OnClickListener{
         iniciar = findViewById(R.id.btnIniciarSesion);
         forgPass= findViewById(R.id.forgPass);
         iniciar.setOnClickListener(this);
-        autentica=FirebaseAuth.getInstance();
+
 
 
     }
@@ -49,7 +51,7 @@ public class login extends AppCompatActivity implements View.OnClickListener{
         switch(v.getId()){
             case R.id.btnIniciarSesion:
                 email=correo.getText().toString();
-                pass=contraseña.getText().toString();
+                pass=contraseña.getText().toString().trim();
                 verificaciones(email,pass);
                 autenticar(email,pass);
 
@@ -77,7 +79,7 @@ public class login extends AppCompatActivity implements View.OnClickListener{
         return pattern.matcher(email).matches();
     }
     private void autenticar(String mail, final String passw){
-        autentica.signInWithEmailAndPassword(mail,passw)
+        mAuth.signInWithEmailAndPassword(mail,passw)
                 .addOnCompleteListener(login.this, new OnCompleteListener<AuthResult>() {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
