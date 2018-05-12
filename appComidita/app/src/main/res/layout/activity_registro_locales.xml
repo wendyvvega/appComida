@@ -10,26 +10,44 @@
         android:id="@+id/txtLocal"
         android:layout_width="220dp"
         android:layout_height="46dp"
+        android:layout_marginEnd="96dp"
+        android:layout_marginLeft="95dp"
+        android:layout_marginRight="96dp"
+        android:layout_marginStart="95dp"
         android:gravity="center"
         android:text=" Regístrate y dáte a conocer ante muchas personas."
-        app:layout_constraintTop_toBottomOf="@+id/textView7"
-        tools:layout_editor_absoluteX="95dp" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView7" />
 
     <TextView
         android:id="@+id/textView7"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginBottom="1dp"
+        android:layout_marginEnd="127dp"
+        android:layout_marginLeft="124dp"
+        android:layout_marginRight="127dp"
+        android:layout_marginStart="124dp"
+        android:layout_marginTop="10dp"
         android:text="¿Deseas darte a conocer?"
-        tools:layout_editor_absoluteX="124dp"
-        tools:layout_editor_absoluteY="44dp" />
+        app:layout_constraintBottom_toTopOf="@+id/txtLocal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout6" />
 
     <LinearLayout
         android:id="@+id/linearLayout6"
         android:layout_width="409dp"
         android:layout_height="34dp"
+        android:layout_marginEnd="1dp"
+        android:layout_marginLeft="1dp"
+        android:layout_marginRight="1dp"
+        android:layout_marginStart="1dp"
         android:orientation="vertical"
-        tools:layout_editor_absoluteX="1dp"
-        tools:layout_editor_absoluteY="0dp">
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
 
         <android.support.constraint.ConstraintLayout
             android:layout_width="match_parent"
@@ -39,10 +57,13 @@
                 android:id="@+id/hecho_LO"
                 android:layout_width="50dp"
                 android:layout_height="19dp"
+                android:layout_marginEnd="16dp"
                 android:layout_marginLeft="299dp"
+                android:layout_marginRight="16dp"
                 android:layout_marginStart="299dp"
                 android:layout_marginTop="8dp"
                 android:text="Hecho"
+                app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toEndOf="@+id/atrasLO"
                 app:layout_constraintTop_toTopOf="parent" />
 
@@ -52,6 +73,7 @@
                 android:layout_height="40dp"
                 android:layout_marginLeft="4dp"
                 android:layout_marginStart="4dp"
+                app:layout_constraintEnd_toStartOf="@+id/hecho_LO"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
                 app:srcCompat="@drawable/ic_keyboard_arrow_left_black_48dp" />
@@ -60,12 +82,21 @@
     </LinearLayout>
 
     <LinearLayout
+        android:id="@+id/linearLayout3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginBottom="42dp"
+        android:layout_marginEnd="17dp"
+        android:layout_marginLeft="56dp"
+        android:layout_marginRight="17dp"
+        android:layout_marginStart="56dp"
+        android:layout_marginTop="25dp"
         android:gravity="center"
         android:orientation="vertical"
-        tools:layout_editor_absoluteX="56dp"
-        tools:layout_editor_absoluteY="133dp">
+        app:layout_constraintBottom_toTopOf="@+id/linearLayout2"
+        app:layout_constraintEnd_toStartOf="@+id/muestra_passLO"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txtLocal">
 
         <android.support.constraint.ConstraintLayout
             android:layout_width="wrap_content"
@@ -74,32 +105,34 @@
             <EditText
                 android:id="@+id/nomLO"
                 android:layout_width="298dp"
-                android:layout_height="36dp"
+                android:layout_height="wrap_content"
                 android:layout_marginBottom="8dp"
                 android:layout_marginTop="12dp"
                 android:ems="10"
                 android:hint="Nombre del Establecimiento"
                 android:inputType="textPersonName"
                 app:layout_constraintBottom_toTopOf="@+id/editText2"
+                app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
             <EditText
                 android:id="@+id/editText2"
                 android:layout_width="298dp"
-                android:layout_height="36dp"
+                android:layout_height="wrap_content"
                 android:layout_marginBottom="8dp"
                 android:ems="10"
                 android:hint="Dirección Email"
                 android:inputType="textEmailAddress"
                 app:layout_constraintBottom_toTopOf="@+id/editText4"
+                app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/nomLO" />
 
             <EditText
                 android:id="@+id/editText3"
                 android:layout_width="298dp"
-                android:layout_height="36dp"
+                android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
                 android:ems="10"
                 android:hint="Repetir Contraseña"
@@ -112,7 +145,7 @@
             <EditText
                 android:id="@+id/editText4"
                 android:layout_width="298dp"
-                android:layout_height="36dp"
+                android:layout_height="wrap_content"
                 android:ems="10"
                 android:hint="Contraseña"
                 android:inputType="textPassword"
@@ -127,16 +160,25 @@
         android:id="@+id/muestra_passLO"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:srcCompat="@drawable/ic_remove_red_eye_black_24dp"
-        tools:layout_editor_absoluteX="371dp"
-        tools:layout_editor_absoluteY="256dp" />
+        android:layout_marginEnd="16dp"
+        android:layout_marginLeft="17dp"
+        android:layout_marginRight="16dp"
+        android:layout_marginStart="17dp"
+        android:layout_marginTop="222dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/linearLayout3"
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout6"
+        app:srcCompat="@drawable/ic_remove_red_eye_black_24dp" />
 
     <LinearLayout
+        android:id="@+id/linearLayout2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="42dp"
         android:orientation="vertical"
-        tools:layout_editor_absoluteX="53dp"
-        tools:layout_editor_absoluteY="328dp">
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout3">
 
         <android.support.constraint.ConstraintLayout
             android:layout_width="304dp"
@@ -160,8 +202,8 @@
                 android:id="@+id/addImgLO2"
                 android:layout_width="81dp"
                 android:layout_height="69dp"
-                android:layout_marginLeft="16dp"
-                android:layout_marginStart="16dp"
+                android:layout_marginLeft="8dp"
+                android:layout_marginStart="8dp"
                 android:layout_marginTop="16dp"
                 app:layout_constraintEnd_toStartOf="@+id/addImgLO1"
                 app:layout_constraintStart_toStartOf="parent"
@@ -172,8 +214,8 @@
                 android:id="@+id/addImgLO"
                 android:layout_width="81dp"
                 android:layout_height="69dp"
-                android:layout_marginLeft="8dp"
-                android:layout_marginStart="8dp"
+                android:layout_marginEnd="8dp"
+                android:layout_marginRight="8dp"
                 android:layout_marginTop="16dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toEndOf="@+id/addImgLO1"

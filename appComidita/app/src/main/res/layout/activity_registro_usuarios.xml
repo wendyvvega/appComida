@@ -62,7 +62,6 @@
         android:layout_marginLeft="50dp"
         android:layout_marginRight="13dp"
         android:layout_marginStart="50dp"
-        android:layout_marginTop="16dp"
         android:gravity="center"
         android:orientation="vertical"
         app:layout_constraintEnd_toStartOf="@+id/muestraPassRU"
@@ -202,15 +201,16 @@
     </LinearLayout>
 
     <LinearLayout
-        android:layout_width="251dp"
+        android:layout_width="269dp"
         android:layout_height="79dp"
         android:layout_marginEnd="86dp"
         android:layout_marginLeft="74dp"
         android:layout_marginRight="86dp"
         android:layout_marginStart="74dp"
-        android:layout_marginTop="19dp"
+        android:layout_marginTop="16dp"
         android:orientation="vertical"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.166"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/linearLayout5">
 
@@ -230,49 +230,45 @@
                 android:id="@+id/grupo"
                 android:layout_width="264dp"
                 android:layout_height="wrap_content"
-                android:orientation="vertical"
+                android:orientation="horizontal"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent">
 
-                <android.support.constraint.ConstraintLayout
+                <RadioButton
+                    android:id="@+id/sxH"
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_weight="1">
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="31dp"
+                    android:layout_weight="1"
+                    android:text="Hombre"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
 
-                    <RadioButton
-                        android:id="@+id/sxO"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginLeft="15dp"
-                        android:layout_marginStart="15dp"
-                        android:layout_marginTop="31dp"
-                        android:layout_weight="1"
-                        android:text="Otro"
-                        app:layout_constraintStart_toEndOf="@+id/sxM"
-                        app:layout_constraintTop_toTopOf="parent" />
+                <RadioButton
+                    android:id="@+id/sxM"
+                    android:layout_width="match_parent"
+                    android:layout_height="32dp"
+                    android:layout_marginLeft="7dp"
+                    android:layout_marginStart="7dp"
+                    android:layout_marginTop="31dp"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:text="Mujer"
+                    app:layout_constraintStart_toEndOf="@+id/sxH"
+                    app:layout_constraintTop_toTopOf="parent" />
 
-                    <RadioButton
-                        android:id="@+id/sxH"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="31dp"
-                        android:layout_weight="1"
-                        android:text="Hombre"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toTopOf="parent" />
-
-                    <RadioButton
-                        android:id="@+id/sxM"
-                        android:layout_width="wrap_content"
-                        android:layout_height="32dp"
-                        android:layout_marginLeft="7dp"
-                        android:layout_marginStart="7dp"
-                        android:layout_marginTop="31dp"
-                        android:layout_weight="1"
-                        android:text="Mujer"
-                        app:layout_constraintStart_toEndOf="@+id/sxH"
-                        app:layout_constraintTop_toTopOf="parent" />
-                </android.support.constraint.ConstraintLayout>
+                <RadioButton
+                    android:id="@+id/sxO"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="15dp"
+                    android:layout_marginStart="15dp"
+                    android:layout_marginTop="31dp"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:text="Otro"
+                    app:layout_constraintStart_toEndOf="@+id/sxM"
+                    app:layout_constraintTop_toTopOf="parent" />
 
             </RadioGroup>
 

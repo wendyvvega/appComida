@@ -1,8 +1,9 @@
 package com.example.supdude.appcomidita;
 
 public class datosUsuario {
-    public String nombre, apellido, correo,sexo;
+    public String nombre, apellido, correo,sexo,iDfavoritos;
     public int numero;
+
 
     public String getNombre() {
         return nombre;
