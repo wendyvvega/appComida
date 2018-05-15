@@ -32,7 +32,47 @@ public class datosLocal {
     public String contra;
     public String direccion;
     public String calle1;
+    public double lat,longitud;
+    public String tel1,tel2;
 
+    public datosLocal(String nombreLocal, String mail, String direccion, String tel1) {
+        this.nombreLocal = nombreLocal;
+        this.mail = mail;
+        this.direccion = direccion;
+        this.tel1 = tel1;
+    }
+
+    public double getLat() {
+        return lat;
+    }
+
+    public void setLat(double lat) {
+        this.lat = lat;
+    }
+
+    public double getLongitud() {
+        return longitud;
+    }
+
+    public void setLongitud(double longitud) {
+        this.longitud = longitud;
+    }
+
+    public String getTel1() {
+        return tel1;
+    }
+
+    public void setTel1(String tel1) {
+        this.tel1 = tel1;
+    }
+
+    public String getTel2() {
+        return tel2;
+    }
+
+    public void setTel2(String tel2) {
+        this.tel2 = tel2;
+    }
 
     public String getDireccion() {
         return direccion;
@@ -99,6 +139,7 @@ public class datosLocal {
         this.sitio = sitio;
         this.tipoCuenta = tipoCuenta;
     }
+
 
     public int tipoCuenta;
 

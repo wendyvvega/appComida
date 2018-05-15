@@ -5,6 +5,7 @@ import android.app.Activity;
 
 import android.app.Fragment;
 import android.app.FragmentManager;
+import android.content.Intent;
 import android.net.Uri;
 import android.support.v13.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
@@ -25,7 +26,7 @@ public class paquetes extends Activity implements paquetes1.OnFragmentInteractio
          {
         ImageView atrasPk1,atraspk2;
         Button obPK1,obPk2;
-        int paqueteEleg;
+        String paqueteEleg;
     /**
      * The {@link android.support.v4.view.PagerAdapter} that will provide
      * fragments for each of the sections. We use a
@@ -55,7 +56,9 @@ public class paquetes extends Activity implements paquetes1.OnFragmentInteractio
         atrasPk1=findViewById(R.id.atrasPak1);
         atraspk2=findViewById(R.id.atrasPak2);
         obPK1=findViewById(R.id.pkt1);
+
         obPk2 =findViewById(R.id.pkt2);
+
 
 
     }
@@ -91,7 +94,22 @@ public class paquetes extends Activity implements paquetes1.OnFragmentInteractio
              @Override
              public void onClick(View v) {
                 switch (v.getId()){
-
+                    case R.id.atrasPak1:
+                        finish();
+                        break;
+                    case R.id.atrasPak2:
+                        finish();
+                        break;
+                    case R.id.pkt1:
+                        paqueteEleg = "1";
+                        Intent i = new Intent(paquetes.this,registroLocales.class);
+                        i.putExtra("paqueteElegido",paqueteEleg);
+                        startActivity(i);
+                    case R.id.pkt2:
+                        paqueteEleg="2";
+                        Intent k = new Intent( paquetes.this,registroLocales.class);
+                        k.putExtra("paqueteElegido",paqueteEleg);
+                        startActivity(k);
 
 
 

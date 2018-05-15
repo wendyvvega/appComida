@@ -13,12 +13,12 @@ import java.util.ArrayList;
 public class AdaptadorLocal extends BaseAdapter {
     Context contexto;
 
-    public AdaptadorLocal(Context contexto, ArrayList<local> listaLocales) {
+    public AdaptadorLocal(Context contexto, ArrayList<datosLocal> listaLocales) {
         this.contexto = contexto;
         this.listaLocales = listaLocales;
     }
 
-    ArrayList<local> listaLocales;
+    ArrayList<datosLocal> listaLocales;
 
 
     @Override
@@ -50,7 +50,7 @@ public class AdaptadorLocal extends BaseAdapter {
         tvDireccion = vista.findViewById(R.id.txtDireccion);
         imagenLocal = vista.findViewById(R.id.imgLocal);
 
-        tvNombre.setText(listaLocales.get(position).getNombre());
+        tvNombre.setText(listaLocales.get(position).getNombreLocal());
        /* tvTelefono.setText(listaLocales.get(position).getTelefono());
         tvEmail.setText(listaLocales.get(position).get());*/
         return vista;

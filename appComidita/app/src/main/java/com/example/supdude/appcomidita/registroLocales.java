@@ -30,6 +30,7 @@ public class registroLocales extends AppCompatActivity implements View.OnClickLi
     private FirebaseAuth auth;
     private DatabaseReference mFirebaseDatabase;
     private FirebaseDatabase mFirebaseInstance;
+    private String pktOb;
 
 
     @Override
@@ -56,7 +57,9 @@ public class registroLocales extends AppCompatActivity implements View.OnClickLi
         auth= FirebaseAuth.getInstance();
         mFirebaseInstance = FirebaseDatabase.getInstance();
         // get reference to 'users' node
-        mFirebaseDatabase = mFirebaseInstance.getReference("Clientes");
+        mFirebaseDatabase = mFirebaseInstance.getReference("Locales");
+        Bundle obtenido=getIntent().getExtras();
+        pktOb=obtenido.getString("paqueteElegido");
 
     }
 
@@ -85,14 +88,16 @@ public class registroLocales extends AppCompatActivity implements View.OnClickLi
                                     String calle1="";
                                     String tel2="", sWeb="",tel1="",numInt="",numExt="",calle2="";
                                     String id_usuario = auth.getCurrentUser().getUid();
-                                    int tipoCuenta;
-                                    DatabaseReference dbRef = FirebaseDatabase.getInstance().getReference().child("Locales").child("L");
-                                    Map nuevoMapa = new HashMap();
-                                    nuevoMapa.put("Nombre" ,nombre);
+                                    String tipo1="LocalesBásicos",tipo2="LocalesPremium";
+                                    int tipoCuenta=Integer.parseInt(pktOb);
+                                    if(tipoCuenta==1){
+                                     insertarBd(nombre,mail,direccion,calle1,calle2,tel1,tel2,numInt,numExt,sWeb,tipoCuenta,tipo1,id_usuario);
+                                    }else{
+                                        if(tipoCuenta==2){
+                                            insertarBd(nombre,mail,direccion,calle1,calle2,tel1,tel2,numInt,numExt,sWeb,tipoCuenta,tipo2,id_usuario);
+                                        }
+                                    }
 
-                                    nuevoMapa.put("Correo" ,mail);
-                                    dbRef.setValue(nuevoMapa);
-                                    startActivity(new Intent(registroLocales.this,login.class));
                                 }
                             }
                         });
@@ -103,6 +108,27 @@ public class registroLocales extends AppCompatActivity implements View.OnClickLi
 
 
         }
+
+    }
+    private void insertarBd(String nombre, String mail, String direccion, String calle1,
+                            String calle2, String tel1, String tel2, String numInt, String numExt,
+                            String sWeb, int tipoCuenta,String nomTipo, String id){
+        DatabaseReference dbRef = FirebaseDatabase.getInstance().getReference()
+                .child("Locales").child(nomTipo).child(id);
+        Map nuevoMapa = new HashMap();
+        nuevoMapa.put("Nombre" ,nombre);
+        nuevoMapa.put("Correo" ,mail);
+        nuevoMapa.put("Dirección",direccion);
+        nuevoMapa.put("Calle1",calle1);
+        nuevoMapa.put("Calle2",calle2);
+        nuevoMapa.put("Telefono1",tel1);
+        nuevoMapa.put("Telefono2",tel2);
+        nuevoMapa.put("NumInt",numInt);
+        nuevoMapa.put("NumExt",numExt);
+        nuevoMapa.put("SitioWeb",sWeb);
+        nuevoMapa.put("TipoDeCuenta",tipoCuenta);
+        dbRef.setValue(nuevoMapa);
+        startActivity(new Intent(registroLocales.this,login.class));
 
     }
 }

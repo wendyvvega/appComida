@@ -1,12 +1,16 @@
 package com.example.supdude.appcomidita;
 
 import android.content.Context;
+import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.app.Fragment;
+import android.support.annotation.Nullable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.ImageView;
 
 
 /**
@@ -17,15 +21,18 @@ import android.view.ViewGroup;
  * Use the {@link paquetes1#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class paquetes1 extends Fragment {
+public class paquetes1 extends Fragment implements View.OnClickListener {
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
 
+
+
     // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
+    String paqueteEleg;
 
     private OnFragmentInteractionListener mListener;
 
@@ -54,10 +61,14 @@ public class paquetes1 extends Fragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
         if (getArguments() != null) {
+
             mParam1 = getArguments().getString(ARG_PARAM1);
             mParam2 = getArguments().getString(ARG_PARAM2);
         }
+
+
     }
 
     @Override
@@ -91,6 +102,11 @@ public class paquetes1 extends Fragment {
         mListener = null;
     }
 
+    @Override
+    public void onClick(View v) {
+
+    }
+
     /**
      * This interface must be implemented by activities that contain this
      * fragment to allow an interaction in this fragment to be communicated
@@ -104,5 +120,32 @@ public class paquetes1 extends Fragment {
     public interface OnFragmentInteractionListener {
         // TODO: Update argument type and name
         void onFragmentInteraction(Uri uri);
+    }
+
+    @Override
+    public void onViewCreated(final View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+        Button obPK1;
+        ImageView atrasPk1;
+        obPK1=view.findViewById(R.id.pkt1);
+        atrasPk1=view.findViewById(R.id.atrasPak1);
+
+        obPK1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                switch (v.getId()){
+                    case R.id.atrasPak1:
+                        getActivity().finish();
+                        break;
+                    case R.id.pkt1:
+                        paqueteEleg = "1";
+                        Intent i = new Intent(view.getContext(),registroLocales.class);
+                        i.putExtra("paqueteElegido",paqueteEleg);
+                        startActivity(i);
+
+
+                }
+            }
+        });
     }
 }

@@ -9,14 +9,14 @@ import java.util.ArrayList;
 public class listaLocales extends AppCompatActivity {
 
     ListView lista;
-    ArrayList<local> listaDeLocales;
+    ArrayList<datosLocal> listaDeLocales;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_lista_locales);
 
         lista = findViewById(R.id.listaLocales);
-        listaDeLocales = new ArrayList<local>();
+        listaDeLocales = new ArrayList<>();
 
         //llenarContactos(listaDeContactos);
 
