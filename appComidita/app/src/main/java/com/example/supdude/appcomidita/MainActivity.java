@@ -51,7 +51,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 startActivity(new Intent (MainActivity.this,registroUsuarios.class));
                 break;
             case R.id.regLocal:
-                startActivity(new Intent (MainActivity.this,registroLocales.class));
+                startActivity(new Intent (MainActivity.this,paquetes.class));
                 break;
         }
     }

@@ -49,6 +49,7 @@ public class registroUsuarios extends AppCompatActivity implements View.OnClickL
         sexoM=findViewById(R.id.sxM);
         sexoO=findViewById(R.id.sxO);
         atras=findViewById(R.id.atrasRU);
+        atras.setOnClickListener(this);
        grupoRadio= findViewById(R.id.grupo);
         done=findViewById(R.id.hecho_RU);
         done.setOnClickListener(this);
@@ -57,7 +58,7 @@ public class registroUsuarios extends AppCompatActivity implements View.OnClickL
         auth= FirebaseAuth.getInstance();
             mFirebaseInstance = FirebaseDatabase.getInstance();
             // get reference to 'users' node
-            mFirebaseDatabase = mFirebaseInstance.getReference("usuarios");
+            mFirebaseDatabase = mFirebaseInstance.getReference("Usuarios");
 
 
         }
@@ -80,7 +81,7 @@ public class registroUsuarios extends AppCompatActivity implements View.OnClickL
                                 public void onComplete(@NonNull Task<AuthResult> task) {
                                    if(!task.isSuccessful()){
                                        FirebaseAuthException e = (FirebaseAuthException)task.getException();
-                                       Toast.makeText(registroUsuarios.this, "Failed Registration: "+e.getMessage(), Toast.LENGTH_SHORT).show();
+                                       Toast.makeText(registroUsuarios.this, "Registro fallido: "+e.getMessage(), Toast.LENGTH_SHORT).show();
                                        return;
                                     }else{
                                        RadioButton seleccionado= findViewById(grupoRadio.getCheckedRadioButtonId());
