@@ -10,6 +10,8 @@ public class listaLocales extends AppCompatActivity {
 
     ListView lista;
     ArrayList<datosLocal> listaDeLocales;
+
+    String opcion="";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -18,6 +20,8 @@ public class listaLocales extends AppCompatActivity {
         lista = findViewById(R.id.listaLocales);
         listaDeLocales = new ArrayList<>();
 
+        Bundle  datos = getIntent().getExtras();
+        opcion = datos.getString("tipoComida");
         //llenarContactos(listaDeContactos);
 
         /*ArrayAdapter<contacto> adaptador = new ArrayAdapter<contacto>(this, R.layout.distribuyevistas,listaDeContactos);

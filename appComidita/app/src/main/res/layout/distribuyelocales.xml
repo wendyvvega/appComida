@@ -27,15 +27,6 @@
         android:textSize="24sp" />
 
     <TextView
-        android:id="@+id/textView6"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_alignStart="@+id/txtNombreLocal"
-        android:layout_marginBottom="30dp"
-        android:text="TextView" />
-
-    <TextView
         android:id="@+id/txtDireccion"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
