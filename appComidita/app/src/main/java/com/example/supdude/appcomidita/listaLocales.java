@@ -6,6 +6,7 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.ListView;
+import android.widget.TextView;
 import android.widget.Toast;
 import android.widget.Toolbar;
 
@@ -15,20 +16,19 @@ import java.util.List;
 public class listaLocales extends AppCompatActivity {
 
     ArrayList<datosLocal> lista;
-    //ArrayList<datosLocal> listaDeLocales;
+    TextView tipoComida;
 
     String opcion="";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_lista_locales);
-        //Toolbar toolbar = findViewById(R.id.toolbar);
-        //setSupportActionBar(toolbar);
 
-       // listaDeLocales = new ArrayList<>();
+        tipoComida = findViewById(R.id.txtComida);
 
         Bundle  datos = getIntent().getExtras();
         opcion = datos.getString("tipoComida");
+        tipoComida.setText(opcion);
 
         lista= new ArrayList<datosLocal>();
         llenar(lista);
@@ -45,19 +45,15 @@ public class listaLocales extends AppCompatActivity {
         //VERTICAL
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
+        //HORIZONTAL
+        //recyclerView.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false));
+        //recyclerView.addItemDecoration(new DividerItemDecoration(this));
 
-        //llenarContactos(listaDeContactos);
-
-        /*ArrayAdapter<contacto> adaptador = new ArrayAdapter<contacto>(this, R.layout.distribuyevistas,listaDeContactos);
-        listView.setAdapter(adaptador);*/
-
-        /*adaptador = new AdaptadorLocal(this, listaDeLocales);
-        lista.setAdapter(adaptador);*/
     }
 
     private void llenar(ArrayList lista) {
-
-        lista.add(new datosLocal("Local1", "uno@gmail.com", "Enrique segoviano","111111"));
+        int [] arregloBandera = {R.drawable.cena};
+        lista.add(new datosLocal("Little Caesars", "www.littlecaesars.com", "Enrique segoviano", R.drawable.littlecaesars));
         lista.add(new datosLocal("Local2", "uno@gmail.com", "Enrique segoviano2","111111"));
         lista.add(new datosLocal("Local3", "uno@gmail.com", "Enrique segoviano3","111111"));
     }
