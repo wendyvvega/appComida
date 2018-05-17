@@ -126,6 +126,22 @@ public class datosLocal {
     public String numInt;
     public String numExt;
     public String sitio;
+    public int logo;
+
+    public int getLogo() {
+        return logo;
+    }
+
+    public void setLogo(int logo) {
+        this.logo = logo;
+    }
+
+    public datosLocal(String nombreLocal, String sitio, String direccion, int logo){
+        this.nombreLocal = nombreLocal;
+        this.sitio = sitio;
+        this.direccion = direccion;
+        this.logo = logo;
+    }
 
     public datosLocal(String nombreLocal, String mail, String contra, String direccion, String calle1, String tel1, String tel2, String calle2, String numInt, String numExt, String sitio, String tipoLocal, int tipoCuenta) {
         this.nombreLocal = nombreLocal;
