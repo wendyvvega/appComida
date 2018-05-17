@@ -20,7 +20,7 @@
         android:id="@+id/recyclerView"
         android:layout_width="368dp"
         android:layout_height="493dp"
+        android:scrollbars="vertical"
         tools:layout_editor_absoluteX="8dp"
-        tools:layout_editor_absoluteY="66dp"
-        android:scrollbars="vertical" />
+        tools:layout_editor_absoluteY="66dp" />
 </LinearLayout>

@@ -8,7 +8,7 @@ import android.widget.ImageView;
 
 public class tiposComida extends AppCompatActivity implements View.OnClickListener{
 
-    ImageView desayuno, comida, cena;
+    ImageView desayuno, comida, cena, cafebares;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -18,10 +18,12 @@ public class tiposComida extends AppCompatActivity implements View.OnClickListen
         desayuno = findViewById(R.id.imgDesayuno);
         comida = findViewById(R.id.imgComida);
         cena = findViewById(R.id.imgCena);
+        cafebares = findViewById(R.id.imgCafeBares);
 
         desayuno.setOnClickListener(this);
         comida.setOnClickListener(this);
         cena.setOnClickListener(this);
+        cafebares.setOnClickListener(this);
     }
 
     @Override
@@ -36,6 +38,9 @@ public class tiposComida extends AppCompatActivity implements View.OnClickListen
                 break;
             case R.id.imgCena:
                 intent.putExtra("tipoComida", "cena");
+                break;
+            case R.id.imgCafeBares:
+                intent.putExtra("tipoComida", "cafebares");
                 break;
         }
         startActivity(intent);
