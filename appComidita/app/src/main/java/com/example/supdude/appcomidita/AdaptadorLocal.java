@@ -36,6 +36,7 @@ public class AdaptadorLocal extends RecyclerView.Adapter<AdaptadorLocal.PaletteV
         datosLocal local = data.get(position);
         holder.getTitleTextView().setText(local.getNombreLocal());
         holder.getSubtitleTextView().setText(local.getDireccion());
+        holder.getCircleView().setImageResource(local.getLogo());
 
         /*GradientDrawable gradientDrawable = (GradientDrawable) holder.getCircleView().getBackground();
         int colorId = android.graphics.Color.parseColor(local.getHex());
@@ -56,7 +57,7 @@ public class AdaptadorLocal extends RecyclerView.Adapter<AdaptadorLocal.PaletteV
 
         public PaletteViewHolder(View itemView) {
             super(itemView);
-            circleView = itemView.findViewById(R.id.imgLocal);
+            circleView = (ImageView) itemView.findViewById(R.id.imgLocal);
             titleTextView = (TextView) itemView.findViewById(R.id.txtNombreLocal);
             subtitleTextView = (TextView) itemView.findViewById(R.id.txtDireccion);
             itemView.setOnClickListener(this);
@@ -70,7 +71,7 @@ public class AdaptadorLocal extends RecyclerView.Adapter<AdaptadorLocal.PaletteV
             return subtitleTextView;
         }
 
-        public View getCircleView() {
+        public ImageView getCircleView() {
             return circleView;
         }
 
@@ -79,51 +80,4 @@ public class AdaptadorLocal extends RecyclerView.Adapter<AdaptadorLocal.PaletteV
             recyclerViewOnItemClickListener.onClick(v, getAdapterPosition());
         }
     }
-
-
-    /*
-    Context contexto;
-
-    public AdaptadorLocal(Context contexto, ArrayList<datosLocal> listaLocales) {
-        this.contexto = contexto;
-        this.listaLocales = listaLocales;
-    }
-
-    ArrayList<datosLocal> listaLocales;
-
-
-    @Override
-    public int getCount() {
-        return 0;
-    }
-
-    @Override
-    public Object getItem(int position) {
-        return null;
-    }
-
-    @Override
-    public long getItemId(int position) {
-        return 0;
-    }
-
-    @Override
-    public View getView(int position, View convertView, ViewGroup parent) {
-        View vista = convertView;
-        if(vista == null){
-            LayoutInflater inflador = (LayoutInflater) contexto.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-            vista = inflador.inflate(R.layout.distribuyelocales, parent, false);
-        }
-        TextView tvNombre, tvDireccion;
-        ImageView imagenLocal;
-
-        tvNombre = vista.findViewById(R.id.txtNombreLocal);
-        tvDireccion = vista.findViewById(R.id.txtDireccion);
-        imagenLocal = vista.findViewById(R.id.imgLocal);
-
-        tvNombre.setText(listaLocales.get(position).getNombreLocal());
-       /* tvTelefono.setText(listaLocales.get(position).getTelefono());
-        tvEmail.setText(listaLocales.get(position).get());
-        return vista;
-    }*/
 }
