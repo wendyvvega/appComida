@@ -89,6 +89,7 @@ public class registroLocales extends AppCompatActivity implements View.OnClickLi
                                     String tel2="", sWeb="",tel1="",numInt="",numExt="",calle2="";
                                     String id_usuario = auth.getCurrentUser().getUid();
                                     String tipo1="LocalesBásicos",tipo2="LocalesPremium";
+
                                     int tipoCuenta=Integer.parseInt(pktOb);
                                     if(tipoCuenta==1){
                                      insertarBd(nombre,mail,direccion,calle1,calle2,tel1,tel2,numInt,numExt,sWeb,tipoCuenta,tipo1,id_usuario);
@@ -127,6 +128,7 @@ public class registroLocales extends AppCompatActivity implements View.OnClickLi
         nuevoMapa.put("NumExt",numExt);
         nuevoMapa.put("SitioWeb",sWeb);
         nuevoMapa.put("TipoDeCuenta",tipoCuenta);
+
         dbRef.setValue(nuevoMapa);
         startActivity(new Intent(registroLocales.this,login.class));
 
