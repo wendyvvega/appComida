@@ -269,12 +269,12 @@ public class datosLocal {
 
     String nombComida, descripcion,categoria;
 
-    public datosLocal(String nombComida, String descripcion, String categoria, int precio) {
+   /* public datosLocal(String nombComida, String descripcion, String categoria, int precio) {
         this.nombComida = nombComida;
         this.descripcion = descripcion;
         this.categoria = categoria;
         this.precio = precio;
-    }
+    }*/
 
     int precio;
 }
