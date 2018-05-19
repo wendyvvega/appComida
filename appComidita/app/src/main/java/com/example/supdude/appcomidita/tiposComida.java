@@ -3,12 +3,13 @@ package com.example.supdude.appcomidita;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.CardView;
 import android.view.View;
 import android.widget.ImageView;
 
 public class tiposComida extends AppCompatActivity implements View.OnClickListener{
 
-    ImageView desayuno, comida, cena;
+    CardView desayuno, comida, cena, cafebares;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -18,10 +19,12 @@ public class tiposComida extends AppCompatActivity implements View.OnClickListen
         desayuno = findViewById(R.id.imgDesayuno);
         comida = findViewById(R.id.imgComida);
         cena = findViewById(R.id.imgCena);
+        cafebares = findViewById(R.id.imgCafeBares);
 
         desayuno.setOnClickListener(this);
         comida.setOnClickListener(this);
         cena.setOnClickListener(this);
+        cafebares.setOnClickListener(this);
     }
 
     @Override
@@ -36,6 +39,9 @@ public class tiposComida extends AppCompatActivity implements View.OnClickListen
                 break;
             case R.id.imgCena:
                 intent.putExtra("tipoComida", "cena");
+                break;
+            case R.id.imgCafeBares:
+                intent.putExtra("tipoComida", "cafebares");
                 break;
         }
         startActivity(intent);

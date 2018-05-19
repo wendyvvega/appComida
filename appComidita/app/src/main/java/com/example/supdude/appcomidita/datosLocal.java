@@ -269,7 +269,11 @@ public class datosLocal {
 
     String nombComida, descripcion,categoria;
 
+<<<<<<< HEAD
    /* public datosLocal(String nombComida, String descripcion, String categoria, int precio) {
+=======
+    /*public datosLocal(String nombComida, String descripcion, String categoria, int precio) {
+>>>>>>> 7ebdef73ae5209c23b198d5d2a675079050bb45e
         this.nombComida = nombComida;
         this.descripcion = descripcion;
         this.categoria = categoria;
