@@ -18,9 +18,12 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     Button sesion, registrarse;
     LinearLayout opcionesReg;
     ImageView regUs,regLoc;
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
         FirebaseOptions.Builder builder = new FirebaseOptions.Builder()
                 .setApplicationId("1:783313982016:android:ca6cfd1819cf1b77")
                 .setApiKey("AIzaSyBnzisdF-UeKRAw7Ef3hHi7Y8gc4N1ZP1o")

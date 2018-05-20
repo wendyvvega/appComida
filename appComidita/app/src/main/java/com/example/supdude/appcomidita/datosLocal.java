@@ -156,18 +156,87 @@ public class datosLocal implements Serializable {
         this.horario = horario;
     }
 
-    public datosLocal(String nombreLocal, String mail, String contra, String direccion, String calle1, String calle2, String numInt, String numExt, String sitio, int tipoCuenta) {
+    public datosLocal(String nombreLocal, String mail, String contra, String direccion, String calle1, String tel1, String tel2, String calle2, String numInt, String numExt, String sitio, String tipoLocal, int tipoCuenta) {
         this.nombreLocal = nombreLocal;
         this.mail = mail;
         this.contra = contra;
         this.direccion = direccion;
         this.calle1 = calle1;
+        this.tel1 = tel1;
+        this.tel2 = tel2;
         this.calle2 = calle2;
         this.numInt = numInt;
         this.numExt = numExt;
         this.sitio = sitio;
+        this.tipoLocal = tipoLocal;
         this.tipoCuenta = tipoCuenta;
     }
+
+    public String getTipoLocal() {
+        return tipoLocal;
+
+    }
+
+        String desayuno="Desayuno";
+    String comida = "Comida";
+    String cena="Cena";
+    String cafe="Café";
+    String bares="bares";
+
+    public datosLocal(String desayuno, String comida, String cena, String cafe, String bares) {
+        this.desayuno = desayuno;
+        this.comida = comida;
+        this.cena = cena;
+        this.cafe = cafe;
+        this.bares = bares;
+    }
+
+    public String getDesayuno() {
+        return desayuno;
+    }
+
+    public void setDesayuno(String desayuno) {
+        this.desayuno = desayuno;
+    }
+
+    public String getComida() {
+        return comida;
+    }
+
+    public void setComida(String comida) {
+        this.comida = comida;
+    }
+
+    public String getCena() {
+        return cena;
+    }
+
+    public void setCena(String cena) {
+        this.cena = cena;
+    }
+
+    public String getCafe() {
+        return cafe;
+    }
+
+    public void setCafe(String cafe) {
+        this.cafe = cafe;
+    }
+
+    public String getBares() {
+        return bares;
+    }
+
+    public void setBares(String bares) {
+        this.bares = bares;
+    }
+
+    public void setTipoLocal(String tipoLocal) {
+        this.tipoLocal = tipoLocal;
+    }
+
+    public String tipoLocal;
+
 
 
     public int tipoCuenta;
@@ -179,4 +248,50 @@ public class datosLocal implements Serializable {
     public void setTipoCuenta(int tipoCuenta) {
         this.tipoCuenta = tipoCuenta;
     }
+    public String getNombComida() {
+        return nombComida;
+    }
+
+    public void setNombComida(String nombComida) {
+        this.nombComida = nombComida;
+    }
+
+    public String getDescripcion() {
+        return descripcion;
+    }
+
+    public void setDescripcion(String descripcion) {
+        this.descripcion = descripcion;
+    }
+
+    public String getCategoria() {
+        return categoria;
+    }
+
+    public void setCategoria(String categoria) {
+        this.categoria = categoria;
+    }
+
+    public int getPrecio() {
+        return precio;
+    }
+
+    public void setPrecio(int precio) {
+        this.precio = precio;
+    }
+
+    String nombComida, descripcion,categoria;
+
+<<<<<<< HEAD
+   /* public datosLocal(String nombComida, String descripcion, String categoria, int precio) {
+=======
+    /*public datosLocal(String nombComida, String descripcion, String categoria, int precio) {
+>>>>>>> 7ebdef73ae5209c23b198d5d2a675079050bb45e
+        this.nombComida = nombComida;
+        this.descripcion = descripcion;
+        this.categoria = categoria;
+        this.precio = precio;
+    }*/
+
+    int precio;
 }
