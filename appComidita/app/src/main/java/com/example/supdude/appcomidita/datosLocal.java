@@ -2,9 +2,7 @@ package com.example.supdude.appcomidita;
 
 import android.graphics.Bitmap;
 
-import java.io.Serializable;
-
-public class datosLocal implements Serializable {
+public class datosLocal {
     public String getNombreLocal() {
         return nombreLocal;
     }
@@ -36,15 +34,6 @@ public class datosLocal implements Serializable {
     public String calle1;
     public double lat,longitud;
     public String tel1,tel2;
-    public String horario;
-
-    public String getHorario() {
-        return horario;
-    }
-
-    public void setHorario(String horario) {
-        this.horario = horario;
-    }
 
     public datosLocal(String nombreLocal, String mail, String direccion, String tel1) {
         this.nombreLocal = nombreLocal;
@@ -147,13 +136,11 @@ public class datosLocal implements Serializable {
         this.logo = logo;
     }
 
-    public datosLocal(String nombreLocal, String sitio, String direccion, int logo, String tel1, String horario){
+    public datosLocal(String nombreLocal, String sitio, String direccion, int logo){
         this.nombreLocal = nombreLocal;
         this.sitio = sitio;
         this.direccion = direccion;
         this.logo = logo;
-        this.tel1 = tel1;
-        this.horario = horario;
     }
 
     public datosLocal(String nombreLocal, String mail, String contra, String direccion, String calle1, String tel1, String tel2, String calle2, String numInt, String numExt, String sitio, String tipoLocal, int tipoCuenta) {

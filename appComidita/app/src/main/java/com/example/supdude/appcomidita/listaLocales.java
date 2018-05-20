@@ -1,7 +1,5 @@
 package com.example.supdude.appcomidita;
 
-import android.content.Intent;
-import android.os.Parcelable;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
@@ -12,11 +10,10 @@ import android.widget.TextView;
 import android.widget.Toast;
 import android.widget.Toolbar;
 
-import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
-public class listaLocales extends AppCompatActivity implements Serializable {
+public class listaLocales extends AppCompatActivity {
 
     ArrayList<datosLocal> lista;
     TextView tipoComida;
@@ -39,12 +36,10 @@ public class listaLocales extends AppCompatActivity implements Serializable {
         recyclerView.setAdapter(new AdaptadorLocal(lista, new RecyclerViewOnItemClickListener() {
             @Override
             public void onClick(View v, int position) {
-                Toast.makeText(listaLocales.this, lista.get(position).getNombreLocal(), Toast.LENGTH_SHORT).show();
-                Intent i = new Intent(listaLocales.this, local.class);
-                i.putExtra("objeto",  lista.get(position));
-                //i.putExtra("posicion", position);
-                i.putExtra("tipoComida", opcion);
-                startActivity(i);
+                Toast toast = Toast.makeText(listaLocales.this, String.valueOf(position), Toast.LENGTH_SHORT);
+                int color = android.graphics.Color.parseColor(lista.get(position).getNombreLocal());
+                toast.getView().setBackgroundColor(color);
+                toast.show();
             }
         }));
         //VERTICAL
@@ -58,8 +53,7 @@ public class listaLocales extends AppCompatActivity implements Serializable {
 
     private void llenar(ArrayList lista) {
         int [] arregloBandera = {R.drawable.cena};
-        lista.add(new datosLocal("Little Caesars", "www.littlecaesars.com",
-                "Enrique segoviano", R.drawable.littlecaesars, "8129000", "Lunes-Domingo 11AM-10PM"));
+        lista.add(new datosLocal("Little Caesars", "www.littlecaesars.com", "Enrique segoviano", R.drawable.littlecaesars));
         lista.add(new datosLocal("Local2", "uno@gmail.com", "Enrique segoviano2","111111"));
         lista.add(new datosLocal("Local3", "uno@gmail.com", "Enrique segoviano3","111111"));
     }
