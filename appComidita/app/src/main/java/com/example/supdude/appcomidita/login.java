@@ -31,7 +31,7 @@ public class login extends AppCompatActivity implements View.OnClickListener{
     private TextView forgPass;
     private Button iniciar,mapa;
     private FirebaseAuth mAuth;
-    private ImageView showPass;
+    private ImageView showPass,atr_log;
      String email,pass;
     private static final int ERROR_DIALOG_REQUEST = 9001;
 
@@ -40,7 +40,8 @@ public class login extends AppCompatActivity implements View.OnClickListener{
         mAuth=FirebaseAuth.getInstance();
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
-
+        atr_log=findViewById(R.id.atras_login);
+        atr_log.setOnClickListener(this);
          correo= findViewById(R.id.txtUsuario);
         contraseña = findViewById(R.id.txtContra);
         iniciar = findViewById(R.id.btnIniciarSesion);
@@ -70,6 +71,11 @@ public class login extends AppCompatActivity implements View.OnClickListener{
                     startActivity(new Intent(login.this, mapaLocales.class));
                 }
                 break;
+            case    R.id.atras_login:
+                startActivity(new Intent(login.this,MainActivity.class));
+                break;
+
+
         }
     }
     public boolean isServicesOK(){

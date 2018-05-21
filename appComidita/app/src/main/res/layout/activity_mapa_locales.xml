@@ -65,7 +65,7 @@
             android:foregroundGravity="left"
             android:src="@drawable/ic_magnify_black_48dp" />
 
-        <EditText
+        <AutoCompleteTextView
             android:id="@+id/txt_busqueda"
             android:layout_width="300dp"
             android:layout_height="match_parent"

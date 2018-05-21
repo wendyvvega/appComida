@@ -4,7 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".registroLocales">
+    tools:context=".registroLocales"
+    tools:layout_editor_absoluteY="25dp">
 
     <TextView
         android:id="@+id/txtLocal"
@@ -14,6 +15,7 @@
         android:layout_marginLeft="95dp"
         android:layout_marginRight="96dp"
         android:layout_marginStart="95dp"
+        android:layout_marginTop="1dp"
         android:gravity="center"
         android:text=" Regístrate y dáte a conocer ante muchas personas."
         app:layout_constraintEnd_toEndOf="parent"
@@ -24,14 +26,12 @@
         android:id="@+id/textView7"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="1dp"
         android:layout_marginEnd="127dp"
         android:layout_marginLeft="124dp"
         android:layout_marginRight="127dp"
         android:layout_marginStart="124dp"
         android:layout_marginTop="10dp"
         android:text="¿Deseas darte a conocer?"
-        app:layout_constraintBottom_toTopOf="@+id/txtLocal"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/linearLayout6" />
@@ -79,38 +79,51 @@
 
     </LinearLayout>
 
-    <LinearLayout
-        android:id="@+id/linearLayout3"
+    <ImageView
+        android:id="@+id/muestra_passLO"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="42dp"
-        android:layout_marginEnd="17dp"
-        android:layout_marginLeft="56dp"
-        android:layout_marginRight="17dp"
-        android:layout_marginStart="56dp"
-        android:layout_marginTop="25dp"
-        android:gravity="center"
+        android:layout_marginEnd="6dp"
+        android:layout_marginLeft="1dp"
+        android:layout_marginRight="6dp"
+        android:layout_marginStart="1dp"
+        android:layout_marginTop="222dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/linearLayout8"
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout6"
+        app:srcCompat="@drawable/ic_remove_red_eye_black_24dp" />
+
+    <LinearLayout
+        android:id="@+id/linearLayout8"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="32dp"
+        android:layout_marginLeft="111dp"
+        android:layout_marginRight="32dp"
+        android:layout_marginStart="111dp"
+        android:layout_marginTop="12dp"
         android:orientation="vertical"
-        app:layout_constraintBottom_toTopOf="@+id/linearLayout2"
-        app:layout_constraintEnd_toStartOf="@+id/muestra_passLO"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/txtLocal">
 
         <android.support.constraint.ConstraintLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content">
+            android:layout_width="300dp"
+            android:layout_height="299dp"
+            android:foregroundGravity="center">
 
             <EditText
                 android:id="@+id/nomLO"
                 android:layout_width="298dp"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="8dp"
-                android:layout_marginTop="12dp"
+                android:layout_marginTop="25dp"
                 android:ems="10"
                 android:hint="Nombre del Establecimiento"
                 android:inputType="textPersonName"
-                app:layout_constraintBottom_toTopOf="@+id/emailLo"
+                app:layout_constraintBottom_toTopOf="@+id/direccion"
                 app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.733"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
@@ -119,64 +132,79 @@
                 android:layout_width="298dp"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="8dp"
+                android:layout_marginEnd="16dp"
+                android:layout_marginRight="16dp"
                 android:ems="10"
                 android:hint="Dirección Email"
                 android:inputType="textEmailAddress"
                 app:layout_constraintBottom_toTopOf="@+id/passLo"
                 app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/nomLO" />
+                app:layout_constraintTop_toBottomOf="@+id/direccion" />
 
             <EditText
                 android:id="@+id/rePassLo"
                 android:layout_width="298dp"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="8dp"
                 android:ems="10"
                 android:hint="Repetir Contraseña"
                 android:inputType="textPassword"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.73"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/passLo" />
+                app:layout_constraintTop_toBottomOf="@+id/passLo"
+                app:layout_constraintVertical_bias="0.0" />
 
             <EditText
                 android:id="@+id/passLo"
                 android:layout_width="298dp"
-                android:layout_height="50dp"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="8dp"
                 android:ems="10"
                 android:hint="Contraseña"
                 android:inputType="textPassword"
                 app:layout_constraintBottom_toTopOf="@+id/rePassLo"
                 app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.73"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/emailLo" />
+
+            <EditText
+                android:id="@+id/direccion"
+                android:layout_width="298dp"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="8dp"
+                android:layout_marginEnd="24dp"
+                android:layout_marginLeft="65dp"
+                android:layout_marginRight="24dp"
+                android:layout_marginStart="65dp"
+                android:layout_marginTop="4dp"
+                android:ems="10"
+                android:hint="Dirección del establecimiento"
+                android:inputType="textPersonName"
+                app:layout_constraintBottom_toTopOf="@+id/emailLo"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.724"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/nomLO" />
         </android.support.constraint.ConstraintLayout>
     </LinearLayout>
-
-    <ImageView
-        android:id="@+id/muestra_passLO"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="16dp"
-        android:layout_marginLeft="17dp"
-        android:layout_marginRight="16dp"
-        android:layout_marginStart="17dp"
-        android:layout_marginTop="222dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/linearLayout3"
-        app:layout_constraintTop_toBottomOf="@+id/linearLayout6"
-        app:srcCompat="@drawable/ic_remove_red_eye_black_24dp" />
 
     <LinearLayout
         android:id="@+id/linearLayout2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="42dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginRight="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="48dp"
         android:orientation="vertical"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/linearLayout3">
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout8">
 
         <android.support.constraint.ConstraintLayout
             android:layout_width="304dp"

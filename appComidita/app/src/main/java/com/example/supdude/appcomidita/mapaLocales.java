@@ -5,41 +5,39 @@ import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
-import android.location.Address;
-import android.location.Criteria;
-import android.location.Geocoder;
 import android.location.Location;
 import android.location.LocationListener;
 import android.location.LocationManager;
 import android.os.Build;
 import android.provider.Settings;
 import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.FragmentActivity;
 import android.os.Bundle;
-import android.support.v4.content.ContextCompat;
+import android.text.Editable;
+import android.text.TextUtils;
+import android.text.TextWatcher;
 import android.util.Log;
 import android.view.KeyEvent;
 import android.view.View;
 import android.view.WindowManager;
 import android.view.inputmethod.EditorInfo;
-import android.widget.Button;
+import android.widget.ArrayAdapter;
+import android.widget.AutoCompleteTextView;
 import android.widget.EditText;
 import android.widget.ImageView;
-import android.widget.Switch;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.google.android.gms.common.ConnectionResult;
-import com.google.android.gms.common.api.GoogleApi;
 import com.google.android.gms.common.api.GoogleApiClient;
+import com.google.android.gms.common.api.ResultCallback;
 import com.google.android.gms.location.FusedLocationProviderClient;
-import com.google.android.gms.location.LocationServices;
+import com.google.android.gms.location.LocationCallback;
+import com.google.android.gms.location.LocationRequest;
+import com.google.android.gms.location.places.Place;
+import com.google.android.gms.location.places.PlaceBuffer;
 import com.google.android.gms.location.places.Places;
-import com.google.android.gms.maps.CameraUpdate;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.LocationSource;
@@ -50,186 +48,199 @@ import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.LatLngBounds;
 import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
-import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.OnSuccessListener;
-import com.google.android.gms.tasks.Task;
+import com.google.firebase.database.ChildEventListener;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.Query;
+import com.google.firebase.database.ValueEventListener;
 
-import java.io.IOException;
 import java.util.ArrayList;
-import java.util.List;
 
 import static android.content.pm.PackageManager.PERMISSION_GRANTED;
 import static com.google.android.gms.location.LocationServices.getFusedLocationProviderClient;
 
-public class    mapaLocales extends FragmentActivity implements OnMapReadyCallback, LocationListener, View.OnClickListener {
+public class mapaLocales extends FragmentActivity implements OnMapReadyCallback, LocationListener, View.OnClickListener, GoogleMap.OnMarkerClickListener {
 
     private GoogleMap mMap;
     private static final String TAG = "MapActivity";
-    private static final String FINE_LOCATION = Manifest.permission.ACCESS_FINE_LOCATION;
-    private static final String COURSE_LOCATION = Manifest.permission.ACCESS_COARSE_LOCATION;
-    private static final int CODIGO_REQUEST = 1234;
-    private static final float DEFAULT_ZOOM = 15f;
-    private Boolean permisoOtorgado = false;
+    private FirebaseDatabase mFirebaseDatabase;
+    private DatabaseReference rootRef=FirebaseDatabase.getInstance().getReference();
+    private DatabaseReference refLocales=rootRef.child("Locales");
+    private String userID;
+    private LocationManager locationManager;
+    private static final long INTERVAL = 1000 * 10;
+    private static final long FASTEST_INTERVAL = 1000 * 5;
+    private LocationRequest locRequ;
 
-    private FusedLocationProviderClient mFuseLocation;
     private LocationSource.OnLocationChangedListener mListener;
     private GoogleApiClient mGoogleApiClient;
-    //private PlaceAutocompleteAdapter mPlaceAutocompleteAdapter;
-    // private PlaceInfo mPlace;
-    private Marker currentLocationMaker;
-    LocationManager locationManager;
+    private Marker marcador;
+    private ChildEventListener mChildEventListener;
     private LatLng currentLocationLatLong;
-    private  LatLng mochis = new LatLng(25.792806,-108.990188);
-    private LatLngBounds limiteLosMochis = new LatLngBounds(
-            new LatLng(25.747227, -109.044912), new LatLng(25.837238, -108.941891));
+    private LatLng mochis = new LatLng(25.792806, -108.990188);
+    private LatLngBounds LIMITE_LOSMOCHIS = new LatLngBounds(
+            new LatLng(25.747227, -109.044912), new LatLng(25.837238, -108.941891)
+);
+
+
 
     //widgets
-    private EditText barraBusqueda;
+    private AutoCompleteTextView barraBusqueda;
     private ImageView atrasM;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_mapa_locales);
+
         barraBusqueda = findViewById(R.id.txt_busqueda);
-        atrasM=findViewById(R.id.atrasMapa);
+        atrasM = findViewById(R.id.atrasMapa);
         atrasM.setOnClickListener(this);
-        locationManager = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
+        locationManager = (LocationManager) getSystemService(LOCATION_SERVICE);
         inicializarMapa();
         startGettingLocations();
+        sendLocal();
+
+
 
     }
 
-    /*private void getLocationPermission(){
-        Log.d(TAG, "getLocationPermission: getting location permissions");
-        String[] permissions = {Manifest.permission.ACCESS_FINE_LOCATION,
-                Manifest.permission.ACCESS_COARSE_LOCATION};
 
-        if(ContextCompat.checkSelfPermission(this.getApplicationContext(),
-                FINE_LOCATION) == getPackageManager().PERMISSION_GRANTED){
-            if(ContextCompat.checkSelfPermission(this.getApplicationContext(),
-                    COURSE_LOCATION) == getPackageManager().PERMISSION_GRANTED){
-               permisoOtorgado = true;
-                inicializarMapa();
-            }else{
-                ActivityCompat.requestPermissions(this,
-                        permissions,
-                        CODIGO_REQUEST);
-            }
-        }else{
-            ActivityCompat.requestPermissions(this,
-                    permissions,
-                    CODIGO_REQUEST);
-        }
-    }*/
     private void inicializarMapa() {
         SupportMapFragment fragmentoMapa = (SupportMapFragment) getSupportFragmentManager().findFragmentById(R.id.map);
         fragmentoMapa.getMapAsync(mapaLocales.this);
     }
+private void sendLocal(){
+    barraBusqueda.setOnEditorActionListener(new TextView.OnEditorActionListener() {
+        @Override
+        public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
+            if (actionId==EditorInfo.IME_ACTION_SEARCH){
+                String nombreLugar=barraBusqueda.getText().toString();
+               buscarPunto(nombreLugar);
+            }return false;
+        }
+    });
+}
+ private void buscarPunto(String lugarB){
+      DatabaseReference ref=FirebaseDatabase.getInstance().getReference();
+      DatabaseReference refNom=ref.child("Locales");
 
-    private void init() {
-        mGoogleApiClient = new GoogleApiClient
-                .Builder(this)
-                .addApi(Places.GEO_DATA_API)
-                .addApi(Places.PLACE_DETECTION_API)
-                .build();
-        barraBusqueda.setOnEditorActionListener(new TextView.OnEditorActionListener() {
-            @Override
-            public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
-                if (actionId == EditorInfo.IME_ACTION_SEARCH ||
-                        actionId == EditorInfo.IME_ACTION_DONE ||
-                        event.getAction() == KeyEvent.ACTION_DOWN ||
-                        event.getAction() == KeyEvent.KEYCODE_ENTER
 
-                        ) {
-                    geolocalizar();
+    refNom.orderByChild("Nombre").equalTo(lugarB).addListenerForSingleValueEvent(new ValueEventListener() {
+    String lon,lat;
+    @Override
+    public void onDataChange(DataSnapshot dataSnapshot) {
+        for(DataSnapshot nodo : dataSnapshot.getChildren() ) {
+            lon= nodo.child("Ubicacion").child("Longitud").getValue(String.class);
+           lat = nodo.child("Ubicacion").child("Latitud").getValue(String.class);
+        }
+        LatLng goUbicacion = new LatLng(Double.parseDouble(lat),Double.parseDouble(lon));
+        CameraPosition cameraPosition = new CameraPosition.Builder()
+                .target(goUbicacion)      // Sets the center of the map to Mountain View
+                .zoom(18)                   // Sets the zoom
+                .bearing(0)                // Sets the orientation of the camera to east
+                .tilt(30)                   // Sets the tilt of the camera to 30 degrees
+                .build();                   // Creates a CameraPosition from the builder
+        mMap.animateCamera(CameraUpdateFactory.newCameraPosition(cameraPosition));
 
-                }
-                return false;
-            }
-        });
-    }
 
-    private void geolocalizar() {
-        String busqueda = barraBusqueda.getText().toString();
-        Geocoder geocoder = new Geocoder(this);
-        List<Address> list = new ArrayList<>();
-        try {
-            list = geocoder.getFromLocationName(busqueda, list.size());
-        } catch (IOException e) {
-            Log.e(TAG, "geoLocate: IOException: " + e.getMessage());
         }
 
-        if (list.size() > 0) {
-            Address address = list.get(0);
 
-            Log.d(TAG, "geoLocate: found a location: " + address.toString());
-            //Toast.makeText(this, address.toString(), Toast.LENGTH_SHORT).show();
+    @Override
+    public void onCancelled(DatabaseError databaseError) {
 
-        }
     }
+});
 
-    /**
-     * Manipulates the map once available.
-     * This callback is triggered when the map is ready to be used.
-     * This is where we can add markers or lines, add listeners or move the camera. In this case,
-     * we just add a marker near Sydney, Australia.
-     * If Google Play services is not installed on the device, the user will be prompted to install
-     * it inside the SupportMapFragment. This method will only be triggered once the user has
-     * installed Google Play services and returned to the app.
-     */
-    private void obtenerLocDispositivo() {
-        mFuseLocation = getFusedLocationProviderClient(this);
-        try {
-            if (permisoOtorgado) {
-                final Task localizacion = mFuseLocation.getLastLocation();
-                localizacion.addOnCompleteListener(new OnCompleteListener() {
-                    @Override
-                    public void onComplete(@NonNull Task task) {
-                        if (task.isSuccessful()) {
-                            Log.d(TAG, "Se encontró la localización");
-                            centrarMapa();
-                        } else {
-                            Log.d(TAG, "No se pudo enontrar la localización");
-                            Toast.makeText(mapaLocales.this, "unable to get current location", Toast.LENGTH_SHORT).show();
 
+ }
+
+ public void acompletar(){
+
+
+     barraBusqueda.addTextChangedListener(new TextWatcher() {
+         @Override
+         public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+         }
+
+         @Override
+         public void onTextChanged(CharSequence s, int start, int before, int count) {
+
+                 consultaNombresLocales(s.toString());
+
+
+         }
+
+
+         @Override
+         public void afterTextChanged(Editable s) {
+
+         }
+     });
+
+
+ }
+
+ public void consultaNombresLocales(final String texto ){
+     final  ArrayList<String> nombresLoc = new ArrayList <> ();
+    refLocales.addValueEventListener(new ValueEventListener() {
+        @Override
+        public void onDataChange(DataSnapshot dataSnapshot) {
+            for(DataSnapshot ds : dataSnapshot.getChildren()) {
+                String nombreLocal = ds.child("Nombre").getValue(String.class);
+                ArrayList <String> llenadodeLista = new ArrayList<>();
+                llenadodeLista.add(nombreLocal);
+                for (int i = 0; i < llenadodeLista.size(); i++) {
+                    for (int j=0; j < texto.length(); j++) {
+                        if (llenadodeLista.get(i).charAt(0) == texto.charAt(j)) {
+                            nombresLoc.add(nombreLocal);
                         }
-
                     }
-                });
+                }
+
             }
+            ArrayAdapter autoComplete = new ArrayAdapter<String>(getBaseContext(),android.R.layout.simple_list_item_1,nombresLoc);
+            barraBusqueda.setAdapter(autoComplete);
 
-        } catch (SecurityException e) {
-            Log.e(TAG, "obtenerLocalizaciónDelDispositivo: Excepción de seguridad: " + e.getMessage());
         }
-    }
+
+        @Override
+        public void onCancelled(DatabaseError databaseError) {
+
+        }
+    });
 
 
-    /* private void moverCamara (LatLng latLng, float zoom,String titulo){
-          mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(latLng,zoom));
-          if(!titulo.equals("My Location")){
-              MarkerOptions options = new MarkerOptions()
-                      .position(latLng)
-                      .title(titulo);
-              mMap.addMarker(options);
-          }
+ }
 
-          hideSoftKeyboard();
-      }*/
     private void centrarMapa() {
 
-                        Location location = locationManager.getLastKnownLocation(locationManager.NETWORK_PROVIDER);
-                        LatLng coordinate = new LatLng(location.getLatitude(), location.getLongitude());
-                        CameraUpdate yourLocation = CameraUpdateFactory.newLatLngZoom(coordinate,18.0f);
+        Location location = locationManager.getLastKnownLocation(locationManager.GPS_PROVIDER);
+        if(location==null){
+            Toast.makeText(this, "KHEB ERGA", Toast.LENGTH_SHORT).show();
+        }
+        LatLng coordinate = new LatLng(location.getLatitude(), location.getLongitude());
         mMap.addMarker(new MarkerOptions()
-                .position(new LatLng(location.getLatitude(),location.getLongitude()))
-                .title("Marker"));
-
+                .position(new LatLng(location.getLatitude(), location.getLongitude()))
+                .title("Ubicación Actual"));
         mMap.setMinZoomPreference(13.0f);
+        mMap.setLatLngBoundsForCameraTarget(LIMITE_LOSMOCHIS);
 
-        mMap.setLatLngBoundsForCameraTarget(limiteLosMochis);
-        mMap.animateCamera(yourLocation);
+        CameraPosition cameraPosition = new CameraPosition.Builder()
+                .target(coordinate)      // Sets the center of the map to Mountain View
+                .zoom(18)                   // Sets the zoom
+                .bearing(0)                // Sets the orientation of the camera to east
+                .tilt(30)                   // Sets the tilt of the camera to 30 degrees
+                .build();                   // Creates a CameraPosition from the builder
+        mMap.animateCamera(CameraUpdateFactory.newCameraPosition(cameraPosition));
 
-                    }
+
+
+    }
 
 
 
@@ -245,22 +256,37 @@ public class    mapaLocales extends FragmentActivity implements OnMapReadyCallba
             return;
         }
 
-        centrarMapa();
+
+        refLocales.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                for(DataSnapshot nodo : dataSnapshot.getChildren() ){
+                    String lon= nodo.child("Ubicacion").child("Longitud").getValue(String.class);
+                    String lat = nodo.child("Ubicacion").child("Latitud").getValue(String.class);
+                    String nomLocal= nodo.child("Nombre").getValue(String.class);
+                    Log.d("TA",""+lon);
+                    LatLng paraMarcador = new LatLng(Double.parseDouble(lat),Double.parseDouble(lon));
+                    mMap.addMarker(new MarkerOptions().position(paraMarcador).title(nomLocal));
+
+                }
+
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+                Toast.makeText(mapaLocales.this,
+                         "Ocurrió un problema, por favor, inténtelo de nuevo", Toast.LENGTH_SHORT).show();
+            }
+        });
 
         mMap.setMyLocationEnabled(true);
         mMap.getUiSettings().setMyLocationButtonEnabled(false);
         mMap.getUiSettings().isRotateGesturesEnabled();
-        mMap.getUiSettings().isTiltGesturesEnabled();
         mMap.getUiSettings().isZoomGesturesEnabled();
+        centrarMapa();
+        acompletar();
 
-       // init();
-
-
-
-
-
-        }
-
+    }
 
 
 
@@ -284,6 +310,7 @@ public class    mapaLocales extends FragmentActivity implements OnMapReadyCallba
     public void onProviderDisabled(String provider) {
 
     }
+
     private ArrayList findUnAskedPermissions(ArrayList<String> wanted) {
         ArrayList result = new ArrayList();
 
@@ -399,16 +426,18 @@ public class    mapaLocales extends FragmentActivity implements OnMapReadyCallba
 
     @Override
     public void onClick(View v) {
-        switch(v.getId()){
+        switch (v.getId()) {
             case R.id.atrasMapa:
                 finish();
                 break;
-
-
-
-
         }
 
+    }
 
+    @Override
+    public boolean onMarkerClick(Marker marker) {
+        return false;
     }
 }
+
+
