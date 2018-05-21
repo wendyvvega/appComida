@@ -27,7 +27,7 @@ public class login extends AppCompatActivity implements View.OnClickListener{
     private TextView forgPass;
     private Button iniciar;
     private FirebaseAuth mAuth;
-    private ImageView showPass;
+    private ImageView showPass,atr_log;
      String email,pass;
 
     @Override
@@ -35,7 +35,8 @@ public class login extends AppCompatActivity implements View.OnClickListener{
         mAuth=FirebaseAuth.getInstance();
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
-
+        atr_log=findViewById(R.id.atras_login);
+        atr_log.setOnClickListener(this);
          correo= findViewById(R.id.txtUsuario);
         contraseña = findViewById(R.id.txtContra);
         iniciar = findViewById(R.id.btnIniciarSesion);
@@ -59,6 +60,30 @@ public class login extends AppCompatActivity implements View.OnClickListener{
             case R.id.forgPass:
                 startActivity(new Intent (login.this,resetPass.class) );
                 break;
+<<<<<<< HEAD
+=======
+            case R.id.iniciaMapa:
+                if(isServicesOK()) {
+                    startActivity(new Intent(login.this, mapaLocales.class));
+                }
+                break;
+            case    R.id.atras_login:
+                startActivity(new Intent(login.this,MainActivity.class));
+                break;
+
+
+        }
+    }
+    public boolean isServicesOK(){
+
+
+        int available = GoogleApiAvailability.getInstance().isGooglePlayServicesAvailable(this);
+
+        if(available == ConnectionResult.SUCCESS){
+            //everything is fine and the user can make map requests
+
+            return true;
+>>>>>>> 41a510c63d64205ccb672075e1b5e944e048e50f
         }
     }
     public void verificaciones(String mail, String pass){
