@@ -47,6 +47,9 @@
         <activity
             android:name=".paquetes"
             android:label="@string/title_activity_paquetes" />
+<<<<<<< HEAD
+        <activity android:name=".local"></activity>
+=======
         <!--
              The API key for Google Maps-based APIs is defined as a string resource.
              (See the file "res/values/google_maps_api.xml").
@@ -64,6 +67,7 @@
         <activity
             android:name=".mapaLocales"
             android:label="@string/title_activity_mapa_locales" />
+>>>>>>> ec1e1f503a70f68d38c096913e83228628231f32
     </application>
 
 </manifest>
