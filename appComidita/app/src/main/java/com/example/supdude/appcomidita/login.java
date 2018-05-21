@@ -1,12 +1,10 @@
 package com.example.supdude.appcomidita;
 
-import android.app.Dialog;
 import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.TextUtils;
-import android.util.Log;
 import android.util.Patterns;
 import android.view.View;
 import android.widget.Button;
@@ -15,8 +13,6 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.google.android.gms.common.ConnectionResult;
-import com.google.android.gms.common.GoogleApiAvailability;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.FirebaseApp;
@@ -29,11 +25,10 @@ public class login extends AppCompatActivity implements View.OnClickListener{
 
     private EditText correo, contraseña;
     private TextView forgPass;
-    private Button iniciar,mapa;
+    private Button iniciar;
     private FirebaseAuth mAuth;
     private ImageView showPass;
      String email,pass;
-    private static final int ERROR_DIALOG_REQUEST = 9001;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,7 +40,6 @@ public class login extends AppCompatActivity implements View.OnClickListener{
         contraseña = findViewById(R.id.txtContra);
         iniciar = findViewById(R.id.btnIniciarSesion);
         forgPass= findViewById(R.id.forgPass);
-        mapa=findViewById(R.id.iniciaMapa);
         iniciar.setOnClickListener(this);
 
 
@@ -65,34 +59,8 @@ public class login extends AppCompatActivity implements View.OnClickListener{
             case R.id.forgPass:
                 startActivity(new Intent (login.this,resetPass.class) );
                 break;
-            case R.id.iniciaMapa:
-                if(isServicesOK()) {
-                    startActivity(new Intent(login.this, mapaLocales.class));
-                }
-                break;
         }
     }
-    public boolean isServicesOK(){
-
-
-        int available = GoogleApiAvailability.getInstance().isGooglePlayServicesAvailable(this);
-
-        if(available == ConnectionResult.SUCCESS){
-            //everything is fine and the user can make map requests
-
-            return true;
-        }
-        else if(GoogleApiAvailability.getInstance().isUserResolvableError(available)){
-            //an error occured but we can resolve it
-
-            Dialog dialog = GoogleApiAvailability.getInstance().getErrorDialog(this, available, ERROR_DIALOG_REQUEST);
-            dialog.show();
-        }else{
-            Toast.makeText(this, "You can't make map requests", Toast.LENGTH_SHORT).show();
-        }
-        return false;
-    }
-
     public void verificaciones(String mail, String pass){
         mail= correo.getText().toString();
 

@@ -1,0 +1,235 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:color="@color/disabled_color"
+    tools:context=".local"
+    >
+
+    <RelativeLayout
+        android:layout_width="368dp"
+        android:layout_height="40dp"
+        tools:layout_editor_absoluteX="8dp"
+        tools:layout_editor_absoluteY="16dp">
+
+        <TextView
+            android:id="@+id/txtLocal"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_centerHorizontal="true"
+            android:text="Nombre"
+            android:textSize="30sp" />
+
+        <ImageView
+            android:id="@+id/imgImagenLocal"
+            android:layout_width="40dp"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_marginEnd="0dp"
+            app:srcCompat="@drawable/logo" />
+    </RelativeLayout>
+
+    <TabHost
+        android:id="@+id/tabhost"
+        android:layout_width="match_parent"
+        android:layout_height="514dp"
+        android:layout_alignParentStart="true"
+        android:layout_centerVertical="true"
+        tools:layout_editor_absoluteX="0dp"
+        tools:layout_editor_absoluteY="112dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <TabWidget
+                android:id="@android:id/tabs"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+            <FrameLayout
+                android:id="@android:id/tabcontent"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <LinearLayout
+                    android:id="@+id/tab1"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical">
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="309dp"
+                        android:layout_marginLeft="30dp"
+                        android:layout_marginRight="30dp"
+                        android:layout_marginTop="10dp"
+                        android:background="@drawable/relative_layout_background"
+                        >
+
+                        <EditText
+                            android:id="@+id/editCatego"
+                            android:layout_width="160dp"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentStart="true"
+                            android:layout_below="@+id/textView19"
+                            android:layout_marginTop="-92dp"
+                            android:ems="10"
+                            android:enabled="false"
+                            android:inputType="textPersonName"
+                            android:text="categoria"
+                            android:textColor="@color/cast_expanded_controller_background_color" />
+
+                        <TextView
+                            android:id="@+id/textView19"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentBottom="true"
+                            android:layout_alignStart="@+id/textView13"
+                            android:layout_marginBottom="94dp"
+                            android:text="Categoría" />
+
+                        <TextView
+                            android:id="@+id/textView16"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_above="@+id/editHorario"
+                            android:layout_alignStart="@+id/textView13"
+                            android:text="Horario" />
+
+                        <TextView
+                            android:id="@+id/textView13"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentStart="true"
+                            android:layout_alignParentTop="true"
+                            android:layout_marginStart="12dp"
+                            android:layout_marginTop="27dp"
+                            android:text="Dirección" />
+
+                        <EditText
+                            android:id="@+id/editDirec"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentStart="true"
+                            android:layout_below="@+id/textView13"
+                            android:ems="10"
+                            android:enabled="false"
+                            android:inputType="textPersonName"
+                            android:text="Dirección"
+                            android:textColor="@color/cast_expanded_controller_background_color" />
+
+                        <EditText
+                            android:id="@+id/editHorario"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentStart="true"
+                            android:layout_centerVertical="true"
+                            android:ems="10"
+                            android:enabled="false"
+                            android:inputType="textPersonName"
+                            android:text="horario"
+                            android:textColor="@color/cast_expanded_controller_background_color" />
+
+                        <ImageView
+                            android:id="@+id/imagenMapa"
+                            android:layout_width="103dp"
+                            android:layout_height="107dp"
+                            android:layout_alignParentBottom="true"
+                            android:layout_alignParentEnd="true"
+                            android:layout_marginBottom="14dp"
+                            android:layout_marginEnd="16dp"
+                            app:srcCompat="@drawable/google" />
+                    </RelativeLayout>
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="80dp"
+                        android:layout_marginBottom="0dp"
+                        android:layout_marginLeft="30dp"
+                        android:layout_marginRight="30dp"
+                        android:layout_marginTop="7dp"
+                        android:background="@drawable/relative_layout_background">
+
+                        <EditText
+                            android:id="@+id/editSitio"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentBottom="true"
+                            android:layout_alignParentStart="true"
+                            android:ems="10"
+                            android:enabled="false"
+                            android:gravity="center"
+                            android:inputType="textPersonName"
+                            android:text="Sitio web"
+                            android:textColor="@color/cast_expanded_controller_background_color" />
+
+                        <EditText
+                            android:id="@+id/editTelefono"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:ems="10"
+                            android:enabled="false"
+                            android:gravity="center"
+                            android:inputType="textPersonName"
+                            android:text="Telefono"
+                            android:textColor="@color/cast_expanded_controller_background_color" />
+                    </RelativeLayout>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/tab2"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical">
+
+                    <android.support.v7.widget.RecyclerView
+                        android:id="@+id/recycler2"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_marginBottom="33dp">
+
+                    </android.support.v7.widget.RecyclerView>
+
+                </LinearLayout>
+            </FrameLayout>
+        </LinearLayout>
+    </TabHost>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentStart="true">
+
+        <EditText
+            android:id="@+id/txtTotal"
+            android:layout_width="65dp"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginEnd="191dp"
+            android:ems="10"
+            android:enabled="false"
+            android:gravity="center"
+            android:inputType="textPersonName"
+            android:text="0"
+            android:textColor="@color/cast_expanded_controller_background_color"
+            android:textSize="17sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/textView6"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_centerVertical="true"
+            android:layout_marginStart="73dp"
+            android:text="Total $"
+            android:textStyle="bold" />
+    </RelativeLayout>
+</RelativeLayout>
